@@ -6,7 +6,7 @@
 /*   By: abenzaho <abenzaho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 15:53:34 by abenzaho          #+#    #+#             */
-/*   Updated: 2024/12/02 16:36:08 by abenzaho         ###   ########.fr       */
+/*   Updated: 2024/12/02 17:07:13 by abenzaho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_print_hex(unsigned long int c, const char *str)
 	else
 	{
 		write(1, &str[c], 1);
-		i = i + 1
+		i = i + 1;
 	}
-	return (i)
+	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: abenzaho <abenzaho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 16:41:42 by abenzaho          #+#    #+#             */
-/*   Updated: 2024/12/02 17:01:38 by abenzaho         ###   ########.fr       */
+/*   Updated: 2024/12/02 17:06:31 by abenzaho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@ int	ft_putnbr(int n)
 {
 	char	c;
 	int		i;
-	
-    i = 0;
+
+	i = 0;
 	if (n == -2147483648)
 		return (write(1, "-2147483648", 11), 11);
 	else if (n < 0)
 	{
 		write(1, "-", 1);
 		i = i + ft_putnbr(-n);
-        i++;
+		i++;
 	}
 	else if (n > 9)
 	{
@@ -35,7 +35,7 @@ int	ft_putnbr(int n)
 	{
 		c = n + '0';
 		write(1, &c, 1);
-        i++;
+		i++;
 	}
-    return (i);
+	return (i);
 }
