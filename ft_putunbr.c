@@ -1,41 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_hex.c                                     :+:      :+:    :+:   */
+/*   ft_putunbr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abenzaho <abenzaho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/02 15:53:34 by abenzaho          #+#    #+#             */
-/*   Updated: 2024/12/03 10:55:33 by abenzaho         ###   ########.fr       */
+/*   Created: 2024/12/03 09:51:13 by abenzaho          #+#    #+#             */
+/*   Updated: 2024/12/03 10:57:57 by abenzaho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	ft_print_hex(unsigned long int c, const char *str)
+int	ft_putunbr(unsigned int c)
 {
 	int		i;
+	char	n;
 
 	i = 0;
-	if (c > 16)
+	if (c > 9)
 	{
-		i = i + ft_print_hex(c / 16, str);
-		i = i + ft_print_hex(c % 16, str);
+		i = i + ft_putunbr(c / 10);
+		i = i + ft_putunbr(c % 10);
 	}
 	else
 	{
-		write(1, &str[c], 1);
-		i = i + 1;
+		n = c + '0';
+		write(1, &c, 1);
+		i++;
 	}
 	return (i);
-}
-
-int	ft_print_capital_hex(unsigned long int c)
-{
-	return (ft_print_hex(c, "0123456789ABCDEF"));
-}
-
-int	ft_print_small_hex(unsigned long int c)
-{
-	return (ft_print_hex(c, "0123456789abcdef"));
 }

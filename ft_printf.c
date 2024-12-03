@@ -6,38 +6,43 @@
 /*   By: abenzaho <abenzaho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 10:09:38 by abenzaho          #+#    #+#             */
-/*   Updated: 2024/12/02 17:03:31 by abenzaho         ###   ########.fr       */
+/*   Updated: 2024/12/03 10:55:02 by abenzaho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	args_printer(const char *s, va_list args)
+static int	args_printer(const char *format, va_list args)
 {
 	int	c;
-	
+
 	c = 0;
-	if(*format == 'c')
-		c = ft_putchar(va_arg(args, int));	
+	if (*format == 'c')
+		c = ft_putchar(va_arg(args, int));
 	else if (*format == 's')
 		c = ft_putstr(va_arg(args, char *));
 	else if (*format == 'p')
 		c = ft_putvoidp(va_arg(args, void *));
-	else if (*format == 'd'|| *format == 'i')
+	else if (*format == 'd' || *format == 'i')
 		c = ft_putnbr(va_arg(args, int));
 	else if (*format == 'u')
+		c = ft_putunbr(va_arg(args, unsigned int));
 	else if (*format == 'x')
+		c = ft_print_small_hex(args, unsigned long int);
 	else if (*format == 'X')
+		c = ft_print_capital_hex(args, unsigned long int);
 	else if (*format == '%')
+		c = putchar('%');
+	return (c);
 }
 
 int	ft_printf(const char *format, ...)
 {
-	va_list args;
+	va_list	args;
 	int		i;
 	int		counter;
-	
-	if(!format)
+
+	if (!format)
 		return (0);
 	va_start(args, format);
 	while (*format)
@@ -45,7 +50,10 @@ int	ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			counter = counter + args_printer(++format, args);
-
 		}
+		else
+			counter = counter + putchar(*format);
+		format++;
 	}
+	return (counter);
 }
