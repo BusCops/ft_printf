@@ -6,7 +6,7 @@
 /*   By: abenzaho <abenzaho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 15:53:34 by abenzaho          #+#    #+#             */
-/*   Updated: 2024/12/03 10:55:33 by abenzaho         ###   ########.fr       */
+/*   Updated: 2024/12/03 14:06:46 by abenzaho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_print_hex(unsigned long int c, const char *str)
 	int		i;
 
 	i = 0;
-	if (c > 16)
+	if (c >= 16)
 	{
 		i = i + ft_print_hex(c / 16, str);
 		i = i + ft_print_hex(c % 16, str);
@@ -30,12 +30,12 @@ int	ft_print_hex(unsigned long int c, const char *str)
 	return (i);
 }
 
-int	ft_print_capital_hex(unsigned long int c)
+int	ft_print_capital_hex(unsigned int c)
 {
 	return (ft_print_hex(c, "0123456789ABCDEF"));
 }
 
-int	ft_print_small_hex(unsigned long int c)
+int	ft_print_small_hex(unsigned int c)
 {
 	return (ft_print_hex(c, "0123456789abcdef"));
 }
