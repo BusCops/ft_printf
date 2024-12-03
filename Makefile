@@ -1,10 +1,10 @@
 NAME = libftprintf.a
 
-SRC = ft_printf.c ft_print_hex.c ft_putchar.c ft_putnbr.c ft_putstr.c ft_putunbr.c ft_putvoidp.c libftprintf.h
+SRC = ft_printf.c ft_print_hex.c ft_putchar.c ft_putnbr.c ft_putstr.c ft_putunbr.c ft_putvoidp.c
 
-OBJ = ${SRC : .c=.o}
+OBJ = $(SRC:.c=.o)
 
-CC = CC
+CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
@@ -12,16 +12,20 @@ ARFLAGS = ar rcs
 
 RM = rm -f
 
-all : ${NAME}
-	${ARFLAGS} ${NAME} ${OBJ}
+all : $(NAME)
+
+$(NAME) : $(OBJ)
+	$(ARFLAGS) $(NAME) $(OBJ)
 
 %o : %c
-	${CC} ${CFLAGS} -c -o
+	$(CC) $(CFLAGS) -c <$ -o <@
 
-clean : ${OBJ}
-	${RM} ${OBJ}
+clean :
+	$(RM) $(OBJ)
 
 fclean : clean
-	${RM} ${NAME} ${OBJ}
+	$(RM) $(NAME)
 
-.PHONY clean all fclean
+re : fclean all
+
+.PHONY: clean all fclean re

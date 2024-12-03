@@ -6,7 +6,7 @@
 /*   By: abenzaho <abenzaho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 10:09:38 by abenzaho          #+#    #+#             */
-/*   Updated: 2024/12/03 10:55:02 by abenzaho         ###   ########.fr       */
+/*   Updated: 2024/12/03 11:35:56 by abenzaho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,20 @@ static int	args_printer(const char *format, va_list args)
 	else if (*format == 'u')
 		c = ft_putunbr(va_arg(args, unsigned int));
 	else if (*format == 'x')
-		c = ft_print_small_hex(args, unsigned long int);
+		c = ft_print_small_hex(va_arg(args, unsigned long int));
 	else if (*format == 'X')
-		c = ft_print_capital_hex(args, unsigned long int);
+		c = ft_print_capital_hex(va_arg(args, unsigned long int));
 	else if (*format == '%')
-		c = putchar('%');
+		c = ft_putchar('%');
 	return (c);
 }
 
 int	ft_printf(const char *format, ...)
 {
 	va_list	args;
-	int		i;
 	int		counter;
 
+	counter = 0;
 	if (!format)
 		return (0);
 	va_start(args, format);
@@ -52,7 +52,7 @@ int	ft_printf(const char *format, ...)
 			counter = counter + args_printer(++format, args);
 		}
 		else
-			counter = counter + putchar(*format);
+			counter = counter + ft_putchar(*format);
 		format++;
 	}
 	return (counter);

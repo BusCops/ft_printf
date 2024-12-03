@@ -6,7 +6,7 @@
 /*   By: abenzaho <abenzaho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 09:51:13 by abenzaho          #+#    #+#             */
-/*   Updated: 2024/12/03 10:57:57 by abenzaho         ###   ########.fr       */
+/*   Updated: 2024/12/03 11:26:54 by abenzaho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_putunbr(unsigned int c)
 	else
 	{
 		n = c + '0';
-		write(1, &c, 1);
+		write(1, &n, 1);
 		i++;
 	}
 	return (i);
