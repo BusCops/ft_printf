@@ -6,7 +6,7 @@
 /*   By: abenzaho <abenzaho@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 10:09:38 by abenzaho          #+#    #+#             */
-/*   Updated: 2024/12/03 14:06:55 by abenzaho         ###   ########.fr       */
+/*   Updated: 2024/12/04 11:55:44 by abenzaho         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	ft_printf(const char *format, ...)
 
 	counter = 0;
 	if (!format)
-		return (0);
+		return (-1);
 	va_start(args, format);
 	while (*format)
 	{
@@ -55,5 +55,6 @@ int	ft_printf(const char *format, ...)
 			counter = counter + ft_putchar(*format);
 		format++;
 	}
+	va_end(args);
 	return (counter);
 }
